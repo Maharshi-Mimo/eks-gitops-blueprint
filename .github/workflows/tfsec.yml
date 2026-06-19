@@ -2,16 +2,18 @@ name: tfsec
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
+    paths:
+      - "infra/**"
+      - ".github/workflows/tfsec.yml"
   pull_request:
-    branches: [ "main" ]
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    paths:
+      - "infra/**"
+      - ".github/workflows/tfsec.yml"
 
 jobs:
   tfsec:
-    name: Run tfsec sarif report
+    name: Run tfsec SARIF report
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -19,16 +21,16 @@ jobs:
       security-events: write
 
     steps:
-      - name: Clone repo
+      - name: Checkout repository
         uses: actions/checkout@v7
 
       - name: Run tfsec
         uses: aquasecurity/tfsec-sarif-action@21ded20e8ca120cd9d3d6ab04ef746477542a608
         with:
+          directory: infra
           sarif_file: tfsec.sarif
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v3
         with:
-          # Path to SARIF file relative to the root of the repository
           sarif_file: tfsec.sarif
