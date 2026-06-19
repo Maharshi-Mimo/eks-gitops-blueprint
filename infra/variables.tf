@@ -2,8 +2,14 @@ variable "aws_account_id" {
   description = "AWS account ID"
   type        = string
 }
+    
+variable "aws_profile" {
+  description = "AWS CLI profile"
+  type        = string
+  default     = "default"
+}
 
-variable "region" {
+variable "aws_region" {
   description = "AWS region to deploy resources in"
   type        = string
   default     = "us-west-2"

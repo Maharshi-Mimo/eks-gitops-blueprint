@@ -3,3 +3,4 @@ region         = "us-east-2"
 key            = "gitops/tfstate"
 dynamodb_table = "tf_state_lock_table"
 encrypt        = true
+profile        = "Admin"

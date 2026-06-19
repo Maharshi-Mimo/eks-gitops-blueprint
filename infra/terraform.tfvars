@@ -1,5 +1,6 @@
 aws_account_id                  = "484087913619"
-region                          = "us-east-2"
+aws_region                      = "us-east-2"
+aws_profile                     = "Admin"
 cluster_name                    = "test"
 cluster_version                 = "1.30"
 cluster_endpoint_private_access = true

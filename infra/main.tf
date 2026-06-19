@@ -1,3 +1,8 @@
+provider "aws" {
+  region = var.aws_region
+  profile = var.aws_profile
+}
+
 module "eks" {
   source                          = "./modules/eks"
   cluster_name                    = var.cluster_name
