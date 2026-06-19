@@ -51,3 +51,12 @@ variable "eks_node_group_ami_type" {
   default     = "AL2_x86_64"
 }
 
+variable "vpc_id" {
+  description = "ID of the VPC where the EKS cluster will be deployed"
+  type        = string
+}
+
+variable "subnet_ids" {
+  description = "List of subnet IDs for the EKS cluster"
+  type        = list(string)
+}

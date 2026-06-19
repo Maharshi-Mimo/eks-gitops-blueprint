@@ -5,6 +5,8 @@ provider "aws" {
 
 module "eks" {
   source                          = "./modules/eks"
+  vpc_id                          = module.vpc.vpc_id
+  subnet_ids                      = module.vpc.private_subnets
   cluster_name                    = var.cluster_name
   cluster_version                 = var.cluster_version
   cluster_endpoint_private_access = var.cluster_endpoint_private_access
