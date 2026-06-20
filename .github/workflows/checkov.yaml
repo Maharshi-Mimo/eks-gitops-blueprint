@@ -1,0 +1,38 @@
+name: Checkov
+
+on:
+    push:
+        branches: ["main"]
+        paths:
+        - "infra/**"
+        - ".github/workflows/checkov.yaml"
+    pull_request:
+        paths:
+        - "infra/**"
+        - ".github/workflows/checkov.yaml"
+jobs:
+  checkov-job:
+    runs-on: ubuntu-latest
+    name: checkov-action
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: infra/
+          file: infra/tfplan.json 
+          check: CKV_AWS_1
+          skip_check: CKV_AWS_2 
+          quiet: true
+          soft_fail: true 
+          framework: terraform
+          output_file_path: reports/results.sarif 
+          download_external_modules: true
+          log_level: DEBUG 
