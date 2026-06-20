@@ -30,3 +30,9 @@ module "vpc" {
   vpc_enable_dns_hostnames = var.vpc_enable_dns_hostnames
 }
 
+module "ecr" {
+  source               = "./modules/ecr"
+  ecr_repository_name  = var.ecr_repository_name
+  
+}
+
