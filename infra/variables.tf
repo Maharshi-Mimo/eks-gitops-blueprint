@@ -2,7 +2,7 @@ variable "aws_account_id" {
   description = "AWS account ID"
   type        = string
 }
-    
+
 variable "aws_profile" {
   description = "AWS CLI profile"
   type        = string
@@ -112,3 +112,12 @@ variable "ecr_repository_name" {
   type        = string
 }
 
+variable "ecr_pull_role_name" {
+  description = "Name of the IAM role for ECR pull access"
+  type        = string
+}
+
+variable "github_actions_role_name" {
+  description = "Name of the IAM role for GitHub Actions"
+  type        = string
+}
