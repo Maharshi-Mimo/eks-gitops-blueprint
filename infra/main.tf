@@ -1,5 +1,5 @@
 provider "aws" {
-  region = var.aws_region
+  region  = var.aws_region
   profile = var.aws_profile
 }
 
@@ -31,8 +31,16 @@ module "vpc" {
 }
 
 module "ecr" {
-  source               = "./modules/ecr"
-  ecr_repository_name  = var.ecr_repository_name
-  
+  source              = "./modules/ecr"
+  ecr_repository_name = var.ecr_repository_name
+
+}
+
+module "iam" {
+  source                   = "./modules/iam"
+  ecr_pull_role_name       = var.ecr_pull_role_name
+  github_actions_role_name = var.github_actions_role_name
+  oidc_provider_arn        = module.eks.oidc_provider_arn
+  depends_on               = [module.eks]
 }
 
