@@ -1,4 +1,4 @@
-resource aws_ecr_repository test {
+resource "aws_ecr_repository" "app" {
     name = var.ecr_repository_name
     image_tag_mutability = "MUTABLE"
     image_scanning_configuration {
@@ -9,8 +9,8 @@ resource aws_ecr_repository test {
     }
 }
 
-resource aws_ecr_repository_policy test {
-    repository = aws_ecr_repository.test.name
+resource "aws_ecr_lifecycle_policy" "app" {
+    repository = aws_ecr_repository.app.name
     policy = jsonencode({
         rules = [ {
             rulePriority = 1
