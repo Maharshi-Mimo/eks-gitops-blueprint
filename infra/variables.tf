@@ -121,3 +121,8 @@ variable "github_actions_role_name" {
   description = "Name of the IAM role for GitHub Actions"
   type        = string
 }
+
+variable "argocd_app_version" {
+  description = "The version of ArgoCD to deploy"
+  type        = string
+}

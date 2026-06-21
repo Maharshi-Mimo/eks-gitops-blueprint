@@ -20,3 +20,4 @@ vpc_enable_dns_hostnames        = true
 ecr_repository_name             = "test-repo"
 ecr_pull_role_name              = "test-ecr-pull-role"
 github_actions_role_name        = "test-github-actions-role"
+argocd_app_version                  = "6.7.3"
