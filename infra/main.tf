@@ -45,3 +45,9 @@ module "iam" {
   depends_on               = [module.eks]
 }
 
+module "argocd" {
+  source = "./modules/argocd"
+  depends_on = [module.eks]
+  argocd_version = var.argocd_app_version
+}
+
