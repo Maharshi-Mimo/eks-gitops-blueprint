@@ -16,6 +16,7 @@ module "eks" {
   eks_node_group_max_size         = var.eks_node_group_max_size
   eks_node_group_min_size         = var.eks_node_group_min_size
   eks_node_group_ami_type         = var.eks_node_group_ami_type
+  depends_on                      = [module.vpc]
 }
 
 module "vpc" {
@@ -33,7 +34,7 @@ module "vpc" {
 module "ecr" {
   source              = "./modules/ecr"
   ecr_repository_name = var.ecr_repository_name
-
+  depends_on          = [module.iam]
 }
 
 module "iam" {
