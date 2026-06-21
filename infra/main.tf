@@ -34,7 +34,7 @@ module "vpc" {
 module "ecr" {
   source              = "./modules/ecr"
   ecr_repository_name = var.ecr_repository_name
-  depends_on         = [module.iam]
+  depends_on          = [module.iam]
 }
 
 module "iam" {
