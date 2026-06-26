@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: 0.17.5
+version: 0.1.0
+name : deepspeed
+dependencies:
+- name: deepspeed
+  version: 0.17.5
+  repository: oci://registry-1.docker.io/bitnamicharts/deepspeed
+
