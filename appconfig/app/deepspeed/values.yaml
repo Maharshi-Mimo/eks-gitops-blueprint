@@ -1,0 +1,7 @@
+image:
+  pullPolicy: Always
+client:
+  persistence: 
+    size: 1Gi
+worker:
+  replicaCount: 1
