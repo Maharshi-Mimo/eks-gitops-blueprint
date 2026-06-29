@@ -15,12 +15,24 @@ module "eks" {
       max_size      = var.eks_node_group_max_size
       min_size      = var.eks_node_group_min_size
       ami_type      = var.eks_node_group_ami_type
+      iam_role_additional_policies = {
+        AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+      }
     }
   }
   cluster_addons = {
     vpc-cni            = { most_recent = true }
     coredns            = { most_recent = true }
     kube-proxy         = { most_recent = true }
-    aws-ebs-csi-driver = { most_recent = true }
+    aws-ebs-csi-driver = {
+      most_recent = true
+      timeouts = {
+        create = "60m"
+      }
+    }
+  }
+
+  cluster_addons_timeouts = {
+    create = "60m"
   }
 }
