@@ -6,8 +6,8 @@ module "eks" {
   vpc_id                          = var.vpc_id
   subnet_ids                      = var.subnet_ids
   enable_irsa                     = true
-  cluster_endpoint_public_access  = false
-  cluster_endpoint_private_access = true
+  cluster_endpoint_public_access  = var.cluster_endpoint_public_access
+  cluster_endpoint_private_access = var.cluster_endpoint_private_access
   eks_managed_node_groups = {
     default = {
       instance_type = var.eks_node_group_instance_type
@@ -21,9 +21,9 @@ module "eks" {
     }
   }
   cluster_addons = {
-    vpc-cni            = { most_recent = true }
-    coredns            = { most_recent = true }
-    kube-proxy         = { most_recent = true }
+    vpc-cni    = { most_recent = true }
+    coredns    = { most_recent = true }
+    kube-proxy = { most_recent = true }
     aws-ebs-csi-driver = {
       most_recent = true
       timeouts = {
@@ -31,8 +31,5 @@ module "eks" {
       }
     }
   }
-
-  cluster_addons_timeouts = {
-    create = "60m"
-  }
+  access_entries = var.access_entries
 }

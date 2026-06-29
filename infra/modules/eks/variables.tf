@@ -60,3 +60,9 @@ variable "subnet_ids" {
   description = "List of subnet IDs for the EKS cluster"
   type        = list(string)
 }
+
+variable "access_entries" {
+  description = "Map of access entries to grant cluster access via EKS access entries API"
+  type        = any
+  default     = {}
+}
