@@ -38,6 +38,13 @@ variable "cluster_endpoint_public_access" {
   type        = bool
   default     = true
 }
+
+variable "cluster_endpoint_public_access_cidrs" {
+  description = "List of CIDR blocks which can access the Amazon EKS public API server endpoint"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
 variable "eks_node_group_instance_type" {
   description = "EC2 instance type for the EKS node group"
   type        = string

@@ -8,8 +8,8 @@ resource "helm_release" "argocd" {
 
   values = [yamlencode({
     server = {
-      service = { type = "LoadBalancer" }
-      extraArgs = ["--insecure"]   # TLS terminated at ALB
+      service   = { type = "LoadBalancer" }
+      extraArgs = ["--insecure"] # TLS terminated at ALB
     }
     configs = {
       params = {
