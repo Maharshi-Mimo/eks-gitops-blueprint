@@ -47,7 +47,7 @@ module "eks" {
   cluster_endpoint_public_access  = var.cluster_endpoint_public_access
   access_entries = {
     sso_admin = {
-      principal_arn = "arn:aws:iam::484087913619:role/AWSReservedSSO_AWSAdministratorAccess_97e5038acb0a4c50"
+      principal_arn = "arn:aws:iam::484087913619:role/aws-reserved/sso.amazonaws.com/ap-south-1/AWSReservedSSO_AWSAdministratorAccess_97e5038acb0a4c50"
       type = "STANDARD"
       policy_associations = {
         admin = {
